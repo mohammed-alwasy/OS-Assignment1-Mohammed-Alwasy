@@ -34,25 +34,40 @@ Document your development process as you work on the assignment. Add entries sho
 
 ### Entry 1 - [Date and Time]
 **What I did**: 
+Implemented Feature 1
 
 **Details**: 
-
+Added a new priority field to the Process class (range 1–5, where 5 is highest)
+Updated the constructor to initialize the priority value
+Generated random priorities when creating processes using Random.nextInt()
+Added a getter method getPriority()
+Modified the ready queue output to display each process’s priority when it is added.
 **Challenges**: 
+Initially forgot to update the constructor, which caused errors when creating Process objects
+Needed to ensure the priority value stayed within the required range (1–5)
+The output formatting in VS Code appeared incorrect (colors and layout were not displayed properly)
 
 **Solution**: 
+Updated all constructor calls to include the priority parameter
+Used 1 + random.nextInt(5) to correctly generate values between 1 and 5
+Switched to IntelliJ IDEA, which handled ANSI colors and console output formatting correctly
 
 **Time spent**: 
+1 hours and 30 minutes
 
 ---
 
 ### Entry 2 - [Date and Time]
 **What I did**: 
 
-**Details**: 
+**Details**:
+
 
 **Challenges**: 
 
-**Solution**: 
+
+**Solution**:
+
 
 **Time spent**: 
 
