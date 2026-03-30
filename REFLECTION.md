@@ -7,33 +7,27 @@ Answer the following questions about your learning experience. Each answer shoul
 
 ## Question 1: What did you learn about multithreading?
 
-**Your Answer:**
-
-[Write your answer here. Discuss specific concepts like thread creation, thread states, how threads execute concurrently, what surprised you, etc.]
+I learned that multithreading allows a single process to execute multiple tasks concurrently to boost performance. We explored the critical difference between basic concurrency and true parallelism on multicore systems. I found the mapping models between user and kernel threads—specifically the One-to-One, Many-to-One, and Many-to-Many models—very interesting. Seeing these concepts applied practically through the Java Thread Library for thread creation and management really helped solidify my understanding. Finally, learning about Amdahl's Law was a great reminder that performance gains from adding cores are always limited by the program's sequential parts.
 
 ---
 
 ## Question 2: What was the most challenging part of this assignment?
 
-**Your Answer:**
+The most challenging part of this assignment was implementing the waiting time feature. It was difficult to understand when to update the arrival time and how to correctly calculate the total waiting time. This required a clear understanding of how processes move in and out of the ready queue. At first, I made mistakes in tracking the time, which gave incorrect results. This challenge is related to the concept of scheduling in multithreading. I solved it by testing the program step by step and reviewing the logic carefully.
 
-[Describe the specific challenge. Was it understanding the code? Implementing a feature? Using Git? Explain what made it difficult and how it relates to the course concepts.]
 
 ---
 
 ## Question 3: How did you overcome the challenges you faced?
 
-**Your Answer:**
+I overcame the challenges by first setting up my development environment properly. At the beginning, I faced problems because Java was not installed on my computer, and I had also forgotten to install Git. After installing both tools, I was able to run and test the code. I also sought help from a friend who guided me through using Git and understanding the project structure. Additionally, I debugged the program step by step and carefully reviewed the code to ensure each feature worked correctly. This approach helped me complete the assignment successfully.
 
-[Describe your problem-solving approach. Did you read documentation? Ask for help? Debug systematically? What resources did you use? What strategies worked?]
 
 ---
 
 ## Question 4: How can you apply multithreading concepts in real-world applications?
 
-**Your Answer:**
-
-[Give specific examples from real applications you use (web browsers, games, mobile apps, etc.). Explain why threads are useful in those scenarios. Connect to what you learned in this assignment.]
+Multithreading is crucial in web browsers, where one thread renders the page while another downloads data simultaneously. In video games, applying the multicore programming concepts we studied allows separate threads to handle physics, audio, and graphics in true parallelism. This prevents the system from lagging and ensures a highly responsive user experience. Similarly, mobile apps rely on multithreading so the main user interface doesn't freeze while waiting for background network requests to finish. By utilizing user and kernel thread mapping models, developers can efficiently distribute these concurrent tasks across modern hardware. Ultimately, applying these concepts transforms sluggish, sequential programs into fast, efficient applications.
 
 ---
 
