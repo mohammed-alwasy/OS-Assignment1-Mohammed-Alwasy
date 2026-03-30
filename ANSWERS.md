@@ -10,9 +10,7 @@ Answer all 4 questions with detailed explanations. Each answer should be **3-5 s
 **Question**: Explain the difference between a **thread** and a **process**. Why did we use threads in this assignment instead of creating separate processes?
 
 **Your Answer:**
-
-[Write your answer here. Consider: What is a process? What is a thread? How do they differ in terms of memory, resources, creation overhead? Why are threads more suitable for this simulation?]
-
+A process is an active program in execution that encompasses its own code, current activity, and allocated resources. In contrast, a thread is a smaller unit of execution within that process that shares the same memory space and resources, rather than requiring an isolated memory layout. We used threads for this assignment instead of separate processes because thread creation involves significantly less system overhead. Furthermore, because threads share the same data and heap, they can communicate much more efficiently, making them far more suitable for handling the concurrent tasks required in this simulation  
 ---
 
 ## Question 2: Ready Queue Behavior
@@ -21,15 +19,22 @@ Answer all 4 questions with detailed explanations. Each answer should be **3-5 s
 
 **Your Answer:**
 
-[Write your answer here. Describe the specific behavior - where does the process go? When does it run again? Give an example from your actual program output showing a process that was re-queued.]
-
+In Round-Robin scheduling, when a process does not finish its task within the allocated time quantum, it is forcefully preempted by the system. The process is transitioned from the "Running" state back to the "Ready" state and is moved to the very back of the ready queue. It will wait in this queue while other processes get their turn, and will only resume execution once it cycles back to the front of the line and the scheduler dispatches it again.
 Example from my output:
 ```
-[Paste a relevant snippet from your program output here showing a process being re-queued]
+▶ P1 executing quantum [4000ms] 
+  ⚡ Quantum progress: [███████████████] 100%
+  ⏸ P1 completed quantum 4000ms │ Overall progress: [█████████░░░░░░░░░░░] 45%
+     Remaining time: 4701ms
+  ↻ P1 yields CPU for context switch
+
+  ➕ P1 (Priority: 3) added to ready queue │ Burst time: 8701ms
+┌─ Ready Queue ─────────────────────────────────────────────────────────────────
+│ [P3 → P4 → P5 → P6 → P7 → P8 → P9 → P10 → P11 → P12 → P13 → P14 → P15 → P16 → P17 → P18 → P19 → P20 → P1]
 ```
 
 **Explanation of example:**
-[Explain what's happening in the output snippet you pasted]
+In this specific snippet, the global time quantum is set to 4000ms. Process P1 requires a total burst time of 8701ms. Because its burst time exceeds the 4000ms quantum, P1 executes until its time limit expires, reaching only 45% overall progress with 4701ms remaining. The system then preempts P1, forcing it to yield the CPU for a context switch. P1 is immediately placed at the very back of the Ready Queue (behind P20), and the CPU will move on to execute P2 and P3. P1 will not run again until all the other processes ahead of it in the queue take their turns.
 
 ---
 
@@ -41,15 +46,15 @@ Example from my output:
 
 [Write your answer here. For each state, explain when P1 enters that state during the simulation. Use your understanding of the code to trace through the lifecycle.]
 
-1. **New**: [When is P1 in New state?]
+1. **New**: P1 is in the New state at the very beginning of the simulation when its thread object is first created and its initial burst time (8701ms) and priority (3) are configured, but before it has been submitted to the scheduler.
 
-2. **Runnable**: [When does P1 become Runnable?]
+2. **Runnable**: P1 enters the Runnable (or Ready) state when it is placed into the ready queue to wait for CPU allocation. In my output, this happens initially when the log shows + P1 ... added to ready queue, and it re-enters this state later after its 4000ms time quantum expires and it is forced to yield the CPU.
 
-3. **Running**: [When is P1 Running?]
+3. **Running**: P1 is in the Running state when the scheduler dispatches it and it actively holds the CPU. In the simulation, this is explicitly shown by the line ▶ P1 executing quantum [4000ms], where it makes 45% progress on its task.
 
-4. **Waiting**: [When/why would P1 be Waiting?]
+4. **Waiting**: P1 would transition to the Waiting (or Blocked) state if it needed to request an I/O operation or wait for a specific external event. While my specific output snippet shows P1 as a CPU-bound task bouncing between Running and Runnable, it would pause in this state if it needed to wait for external data.
 
-5. **Terminated**: [When is P1 Terminated?]
+5. **Terminated**: P1 will enter the Terminated state once it successfully finishes its entire 8701ms burst time. Because it still has 4701ms remaining after its first quantum, it will need to cycle through the queue and run again before it can finally terminate.
 
 ---
 
@@ -59,31 +64,26 @@ Example from my output:
 
 **Your Answer:**
 
-### Example 1: [Name of application/scenario]
+### Example 1: [Interactive Graphical User Interfaces (GUIs)]
 
 **Description**: 
-[Describe the real-world scenario or application]
-
+Modern desktop environments and complex applications (like web browsers or media players) rely on multithreading to manage different tasks simultaneously. For instance, one thread might be actively decoding a video file while another thread listens for the user to click the "pause" or "volume" buttons.
 **Why Round-Robin works well here**: 
-[Explain why Round-Robin scheduling is suitable. Consider fairness, responsiveness, predictability, etc.]
-
-### Example 2: [Name of application/scenario]
+In interactive systems, user-perceived latency is the most critical metric. Round-Robin works exceptionally well because it provides highly predictable response times. By rapidly cycling the CPU through all active threads using a short time quantum, it creates the illusion of true concurrency. This ensures that the thread responsible for handling user input gets regular, frequent access to the CPU, keeping the application from feeling "frozen" or laggy while heavy background processing continues.
+### Example 2: [Web Server Handling Client Requests]
 
 **Description**: 
-[Describe the real-world scenario or application]
-
+When a web server (like Apache or Nginx) receives multiple simultaneous connections from different users—such as loading a webpage, downloading a file, or querying a database—it often assigns each incoming request to a separate worker thread to be processed.
 **Why Round-Robin works well here**: 
-[Explain why Round-Robin scheduling is suitable. Consider fairness, responsiveness, predictability, etc.]
-
+Round-Robin scheduling is highly suitable for this scenario because its primary goal is fairness, ensuring no single thread monopolizes the CPU. If one user is downloading a massive file, a Round-Robin scheduler will preempt that thread after its time quantum expires, allowing threads handling smaller, quicker requests to get their turn. This prevents "starvation" and ensures that the web server remains highly responsive to all users rather than getting bogged down by a few heavy tasks.
 ---
 
 ## Summary
 
 **Key concepts I understood through these questions:**
-1. 
-2. 
-3. 
-
+1. the differance between process and threads.
+2. how ready queue is working
+3. the states of threads
 **Concepts I need to study more:**
 1. 
 2. 
