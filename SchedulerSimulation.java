@@ -30,6 +30,9 @@ class Process implements Runnable {
     private int timeQuantum; // Time slice (time quantum) allowed per CPU access (in milliseconds)
     private int remainingTime; // Time left for the process to finish its execution
     private int priority;//feature 1
+    private long arrivalTime;     // feature 3  
+private long waitingTime;     //  feature 3
+private long lastStartTime;   //  feature 3 
 
     // Constructor to initialize the process with name, burst time, and time quantum
     public Process(String name, int burstTime, int timeQuantum,int priority) {
@@ -38,11 +41,21 @@ class Process implements Runnable {
         this.timeQuantum = timeQuantum;
         this.remainingTime = burstTime; // Initially, remaining time is equal to the burst time
         this.priority=priority; //feature 1
+        this.arrivalTime = System.currentTimeMillis(); // feature 3
+        this.waitingTime = 0; //feature 3
     }
 
     // This method will be called when the thread for this process is started
     @Override
     public void run() {
+        long currentTime = System.currentTimeMillis();
+
+        if (lastStartTime == 0) {
+        waitingTime += (currentTime - arrivalTime);
+        } else {
+        waitingTime += (currentTime - lastStartTime);
+        }
+
         // Simulate running for either the time quantum or remaining time, whichever is smaller
         int runTime = Math.min(timeQuantum, remainingTime); // Run for the smaller of the two times
         
@@ -92,6 +105,8 @@ class Process implements Runnable {
                               Colors.RESET);
         }
         System.out.println();
+
+        lastStartTime = System.currentTimeMillis(); //feature 3: update last start time for waiting time calculation    
     }
     
     // Helper method to create a visual progress bar
@@ -144,13 +159,11 @@ class Process implements Runnable {
     }
 
     // Check if the process has finished (i.e., no remaining time)
-    public boolean isFinished() {
-        return remainingTime <= 0;
-    }
+    public boolean isFinished() { return remainingTime <= 0;}//feature 1
 }
 
 public class SchedulerSimulation {
-    public static int contextSwitches = 0;
+    public static int contextSwitches = 0;  //context switch counter
     public static void main(String[] args) {
         // ⚠️ IMPORTANT: Put your student ID here to seed the random number generator
         // This makes your output unique to you - DO NOT forget to change this!
@@ -243,7 +256,7 @@ public class SchedulerSimulation {
             System.out.println(Colors.BRIGHT_WHITE + "]" + Colors.RESET);
             System.out.println(Colors.BOLD + Colors.MAGENTA + "└" + "─".repeat(79) + Colors.RESET + "\n");
             
-              contextSwitches++;
+              contextSwitches++; // Increment context switch counter
             // Start the thread, which will run the process for one time quantum
             currentThread.start();
             
@@ -285,7 +298,7 @@ public class SchedulerSimulation {
                           "╚════════════════════════════════════════════════════════════════════════════════╝" + 
                           Colors.RESET + "\n");
 
-         System.out.println("Total context switches: " + contextSwitches);
+         System.out.println("Total context switches: " + contextSwitches);  //print total context switches 
     }
     
     // Method to add a process to the queue and map, while printing a "ready" message
