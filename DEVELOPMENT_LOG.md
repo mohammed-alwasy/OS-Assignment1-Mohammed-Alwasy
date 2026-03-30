@@ -82,17 +82,30 @@ Implemented Feature 2 by counting context switches in the scheduler.
 
 ---
 
-### Entry 3 - [Date and Time]
+### Entry 3 - [march 30, 2026, 06:45 am]
 **What I did**: 
+Implemented Feature 3 by tracking and calculating waiting time for each process.
 
 **Details**: 
+1-Added new fields in the Process class: arrivalTime, waitingTime, and lastStartTime.
+2-Used System.currentTimeMillis() to track when each process was created and when it resumed execution.
+3-Calculated waiting time inside the run() method before execution starts.
+4-Calculated waiting time inside the run() method before execution starts.
+5-Updated lastStartTime after each execution to correctly measure future waiting periods.
+6-Created a summary table at the end of the simulation showing Process Name, Burst Time, and Waiting Time.
 
 **Challenges**: 
+1-Initially confused about where to calculate waiting time inside the code.
+2-Had difficulty understanding the difference between arrival time and resume time.
+3-Faced an issue where processes were printed multiple times due to using processMap.values().
 
 **Solution**: 
+1-Placed the waiting time calculation at the beginning of the run() method.
+2-Used lastStartTime to correctly handle multiple executions of the same process.
+3-Stored all processes in a separate list to avoid duplicate entries in the final summary.
 
 **Time spent**: 
-
+  3 hours
 ---
 
 ### Entry 4 - [Date and Time]
