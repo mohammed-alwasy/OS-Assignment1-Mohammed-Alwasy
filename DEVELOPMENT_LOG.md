@@ -78,7 +78,7 @@ Implemented Feature 2 by counting context switches in the scheduler.
 3-Tested the program multiple times to verify the counter increases correctly with each process run.
 
 **Time spent**: 
-1 hour 50 minute
+1 hour 50 minutes
 
 ---
 
@@ -108,17 +108,21 @@ Implemented Feature 3 by tracking and calculating waiting time for each process.
   3 hours
 ---
 
-### Entry 4 - [Date and Time]
+### Entry 4 - [march 31, 2026, 08:45 am]
 **What I did**: 
+Completed the technical questions in ANSWERS.md related to threading and scheduling concepts.
 
 **Details**: 
+I explained the difference between threads and processes, how the ready queue works in Round-Robin scheduling, the lifecycle of a thread, and real-world applications of multithreading.
 
 **Challenges**: 
+I found it difficult to clearly explain the concepts in my own words and connect them to the code and output.
 
 **Solution**: 
 
+I reviewed lecture notes and used examples from my program output to better understand and explain each concept.
 **Time spent**: 
-
+1 hours and 30 minutes
 ---
 
 ### Entry 5 - [Date and Time]
