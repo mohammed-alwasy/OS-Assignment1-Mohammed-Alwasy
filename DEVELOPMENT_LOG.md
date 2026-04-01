@@ -125,17 +125,21 @@ I reviewed lecture notes and used examples from my program output to better unde
 1 hours and 30 minutes
 ---
 
-### Entry 5 - [Date and Time]
+### Entry 5 - [april 1, 2026, 11:50 pm]
 **What I did**: 
-
+Recorded and completed the video demonstration for the assignment.
+I created a 2–3 minute video where I introduced myself, showed my GitHub repository, explained the code modifications (priority, context switches, and waiting time), and demonstrated running the program.
 **Details**: 
+I recorded a video showing my repository, explaining the code changes, and running the program. I tried to keep it 2–3 minutes, but it became about 5 minutes because of the execution time.
 
 **Challenges**: 
+I faced a problem with the audio quality while recording the video, and also had difficulty controlling the video length due to the program execution time.
 
 **Solution**: 
+I fixed the audio issue by adjusting my microphone settings and re-recording the video. I kept the longer video to clearly show the execution.
 
 **Time spent**: 
-
+1 hour
 ---
 
 ### Entry 6 - [Optional - Date and Time]
@@ -155,8 +159,10 @@ I reviewed lecture notes and used examples from my program output to better unde
 
 **Total time spent on assignment**: [10 hours]
 
-**Most challenging part**: feature 3
+**Most challenging part**: feature 3 (waiting time calculation)
 
 **Most interesting learning**: 
+Understanding how multithreading works in Java and how Round-Robin scheduling manages multiple processes fairly using time quantum.
 
 **What I would do differently next time**: 
+I would start earlier and make sure all required tools like Java and Git are installed before beginning the assignment.

@@ -85,5 +85,5 @@ Round-Robin scheduling is highly suitable for this scenario because its primary 
 2. how ready queue is working
 3. the states of threads
 **Concepts I need to study more:**
-1. 
-2. 
+1. more anderstading about threads and process
+2. CPU scheduling algorithms and how waiting time is calculated in detail
