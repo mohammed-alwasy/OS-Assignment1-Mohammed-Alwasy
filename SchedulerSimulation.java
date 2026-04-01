@@ -158,6 +158,10 @@ private long lastStartTime;   //  feature 3
         return priority;
     }
 
+    public long getwaitingTime(){
+        return waitingTime;
+    }
+
     // Check if the process has finished (i.e., no remaining time)
     public boolean isFinished() { return remainingTime <= 0;}//feature 1
 }
@@ -297,6 +301,17 @@ public class SchedulerSimulation {
         System.out.println(Colors.BOLD + Colors.BRIGHT_GREEN + 
                           "╚════════════════════════════════════════════════════════════════════════════════╝" + 
                           Colors.RESET + "\n");
+
+        System.out.println(Colors.BOLD + Colors.CYAN + 
+    "\nProcess Summary Table\n" + Colors.RESET);
+
+System.out.println("Process\tBurst Time\tWaiting Time");
+
+for (Process process : processMap.values()) {
+    System.out.println(process.getName() + "\t" 
+        + process.getBurstTime() + " ms\t\t" 
+        + process.getwaitingTime() + " ms");
+}                  
 
          System.out.println("Total context switches: " + contextSwitches);  //print total context switches 
     }

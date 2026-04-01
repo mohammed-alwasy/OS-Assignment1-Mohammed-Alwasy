@@ -153,9 +153,9 @@ I reviewed lecture notes and used examples from my program output to better unde
 
 ## Summary
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: [10 hours]
 
-**Most challenging part**: 
+**Most challenging part**: feature 3
 
 **Most interesting learning**: 
 
